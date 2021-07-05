@@ -5,11 +5,11 @@ node {
         checkout scm
 
    stage 'Setup'
+        sh 'npm config set strict-ssl=false'
+        sh 'npm config set registry http://registry.npmjs.org/'
         sh 'npm install'
 
    stage 'Mocha test'
-        sh 'npm config set strict-ssl=false'
-        sh 'npm config set registry http://registry.npmjs.org/'
         sh './node_modules/mocha/bin/mocha'
 
    stage 'Cleanup'
